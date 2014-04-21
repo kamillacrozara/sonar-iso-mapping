@@ -33,10 +33,21 @@ import java.util.List;
  * This class is the entry point for all extensions
  */
 @Properties({
-    @Property(
+    @Property
+    (
         key = ISOMappingPlugin.MY_PROPERTY,
         name = "Plugin Property",
-        description = "A property for the plugin")})
+        description = "A property for the plugin",
+        global = false,
+        project = true,
+        module = true
+    )
+
+
+
+  })
+
+
 public final class ISOMappingPlugin extends SonarPlugin {
 
   // modify the following property (variable name, value) to fit your plugin needs
