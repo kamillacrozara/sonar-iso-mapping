@@ -1,8 +1,8 @@
 /*
  * SonarQube ISO/IEC 25000 Mapping
  * Copyright (C) 2014 Kamilla H. Crozara
- * holanda.kamilla@gmail.com
- *
+ * dev@sonar.codehaus.org
+ * 
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either

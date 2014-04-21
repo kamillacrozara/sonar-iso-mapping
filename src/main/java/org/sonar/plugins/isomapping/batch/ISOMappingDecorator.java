@@ -1,7 +1,7 @@
 /*
  * SonarQube ISO/IEC 25000 Mapping
  * Copyright (C) 2014 Kamilla H. Crozara
- * holanda.kamilla@gmail.com
+ * dev@sonar.codehaus.org
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -19,6 +19,7 @@
  */
 package org.sonar.plugins.isomapping.batch;
 
+import org.picocontainer.behaviors.Decorated;
 import org.sonar.plugins.isomapping.ISOMappingMetrics;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.RandomUtils;
@@ -34,6 +35,7 @@ import org.sonar.api.measures.CoreMetrics;
 import org.sonar.api.measures.Measure;
 import org.sonar.api.measures.MeasureUtils;
 import org.sonar.api.measures.Metric;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -75,4 +77,5 @@ public class ISOMappingDecorator implements Decorator {
 							context.getChildrenMeasures(ISOMappingMetrics.ANALYZABILITY)));*/
 		}
 	}
+
 }

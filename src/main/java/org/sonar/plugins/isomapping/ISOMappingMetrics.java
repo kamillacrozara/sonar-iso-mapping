@@ -1,7 +1,7 @@
 /*
  * SonarQube ISO/IEC 25000 Mapping
  * Copyright (C) 2014 Kamilla H. Crozara
- * holanda.kamilla@gmail.com
+ * dev@sonar.codehaus.org
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -28,12 +28,12 @@ import java.util.List;
 public final class ISOMappingMetrics implements Metrics {
 
 	public static final String MODULARITY_DOMAIN = "Modularity";
-	public static final String REUSABILITY_DOMAIN = "Modularity";
-	public static final String ANALYZABILITY_DOMAIN = "Modularity";
-	public static final String CHANGEABILITY_DOMAIN = "Modularity";
-	public static final String MODIFICATION_DOMAIN = "Modularity";
-	public static final String TESTABILITY_DOMAIN = "Modularity";
-	public static final String COMPLIANCE_DOMAIN = "Modularity";
+	public static final String REUSABILITY_DOMAIN = "Reusability";
+	public static final String ANALYZABILITY_DOMAIN = "Analyzability";
+	public static final String CHANGEABILITY_DOMAIN = "Changeability";
+	public static final String MODIFICATION_DOMAIN = "Modification";
+	public static final String TESTABILITY_DOMAIN = "Testability";
+	public static final String COMPLIANCE_DOMAIN = "Compliance";
 
 	// This metric is used by Decorator
 	public static final Metric MODULARITY = new Metric.Builder(
