@@ -1,7 +1,7 @@
 /*
  * SonarQube ISO/IEC 25000 Mapping
  * Copyright (C) 2014 Kamilla H. Crozara
- * dev@sonar.codehaus.org
+ * holanda.kamilla@gmail.com
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -24,33 +24,55 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.RandomUtils;
 import org.sonar.api.batch.Decorator;
 import org.sonar.api.batch.DecoratorContext;
+import org.sonar.api.batch.DependsUpon;
 import org.sonar.api.measures.MeasureUtils;
 import org.sonar.api.resources.Java;
 import org.sonar.api.resources.Project;
 import org.sonar.api.resources.Resource;
 import org.sonar.api.resources.Scopes;
+import org.sonar.api.measures.CoreMetrics;
+import org.sonar.api.measures.Measure;
+import org.sonar.api.measures.MeasureUtils;
+import org.sonar.api.measures.Metric;
+import java.util.Arrays;
+import java.util.List;
 
 public class ISOMappingDecorator implements Decorator {
 
-  public boolean shouldExecuteOnProject(Project project) {
-    // Execute only on Java projects
-    // Modify the condition if the Decorator should be executed in other projects
-    return StringUtils.equals(project.getLanguageKey(), Java.KEY);
-  }
 
-  public void decorate(Resource resource, DecoratorContext context) {
-    // This method is executed on the whole tree of resources.
-    // Bottom-up navigation : Java methods -> Java classes -> files -> packages -> modules -> project
-    if (Scopes.isBlockUnit(resource)) {
-      // Sonar API includes many libraries like commons-lang and google-collections
-      double value = RandomUtils.nextDouble();
+	@DependsUpon
+	public List<Metric> dependsOn() {
+		return Arrays.asList(CoreMetrics.FILE_COMPLEXITY);
+	}
 
-      // Add a measure to the current Java method
-      context.saveMeasure(ISOMappingMetrics.RANDOM, value);
+	public boolean shouldExecuteOnProject(Project project) {
+		// Execute only on Java projects
+		return StringUtils.equals(project.getLanguageKey(), Java.KEY);
+	}
 
-    } else {
-      // we sum random values on resources different than method
-      context.saveMeasure(ISOMappingMetrics.RANDOM, MeasureUtils.sum(true, context.getChildrenMeasures(ISOMappingMetrics.RANDOM)));
-    }
-  }
+	public void decorate(Resource resource, DecoratorContext context) {
+		// This method is executed on the whole tree of resources.
+		// Bottom-up navigation : Java methods -> Java classes -> files ->
+		// packages -> modules -> project
+		if (Scopes.isBlockUnit(resource)) {
+			// Sonar API includes many libraries like commons-lang and
+			// google-collections
+			double value = RandomUtils.nextDouble();
+			
+			System.out.println(value);
+			System.out.println(resource);
+
+			// Add a measure to the current Java method
+			//context.saveMeasure(ISOMappingMetrics.ANALYZABILITY, value);
+
+		} else {
+			System.out.println("Else");
+			// we sum random values on resources different than method
+			/*context.saveMeasure(
+					ISOMappingMetrics.ANALYZABILITY,
+					MeasureUtils.sum(
+							true,
+							context.getChildrenMeasures(ISOMappingMetrics.ANALYZABILITY)));*/
+		}
+	}
 }

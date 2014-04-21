@@ -1,7 +1,7 @@
 /*
  * SonarQube ISO/IEC 25000 Mapping
  * Copyright (C) 2014 Kamilla H. Crozara
- * dev@sonar.codehaus.org
+ * holanda.kamilla@gmail.com
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -21,37 +21,27 @@ package org.sonar.plugins.isomapping.ui;
 
 import org.sonar.api.web.*;
 
-
 // Modify or remove annotations to fit your plugin needs
 @UserRole(UserRole.USER)
 @Description("My Widget")
 @WidgetCategory("Widget Category")
 @WidgetProperties({
-    @WidgetProperty(key = "param1",
-        description = "This is a mandatory parameter",
-        optional = false
-    ),
-    @WidgetProperty(key = "max",
-        description = "This is a parameter with a type and default value",
-        type = WidgetPropertyType.INTEGER,
-        defaultValue = "80"
-    ),
-    @WidgetProperty(key = "param2",
-        description = "This is an optional parameter"
-    ),
-})
-public class ISOMappingWidget extends AbstractRubyTemplate implements RubyRailsWidget {
+		@WidgetProperty(key = "param1", description = "This is a mandatory parameter", optional = false),
+		@WidgetProperty(key = "max", description = "This is a parameter with a type and default value", type = WidgetPropertyType.INTEGER, defaultValue = "80"),
+		@WidgetProperty(key = "param2", description = "This is an optional parameter"), })
+public class ISOMappingWidget extends AbstractRubyTemplate implements
+		RubyRailsWidget {
 
-  public String getId() {
-    return "ISOMappingWidget";
-  }
+	public String getId() {
+		return "ISOMappingWidget";
+	}
 
-  public String getTitle() {
-    return "ISOMappingWidget";
-  }
+	public String getTitle() {
+		return "ISOMappingWidget";
+	}
 
-  @Override
-  protected String getTemplatePath() {
-    return "/isomapping/isomapping_widget.html.erb";
-  }
+	@Override
+	protected String getTemplatePath() {
+		return "/isomapping/isomapping_widget.html.erb";
+	}
 }
