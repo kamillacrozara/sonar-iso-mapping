@@ -1,8 +1,13 @@
 /*
  * SonarQube ISO/IEC 25000 Mapping
  * Copyright (C) 2014 Kamilla H. Crozara
+<<<<<<< HEAD
  * dev@sonar.codehaus.org
  * 
+=======
+ * holanda.kamilla@gmail.com
+ *
+>>>>>>> branch 'master' of https://github.com/kamillacrozara/sonar-iso-mapping.git
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either

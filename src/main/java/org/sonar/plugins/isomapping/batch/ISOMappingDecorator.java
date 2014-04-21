@@ -1,7 +1,7 @@
 /*
  * SonarQube ISO/IEC 25000 Mapping
  * Copyright (C) 2014 Kamilla H. Crozara
- * dev@sonar.codehaus.org
+ * holanda.kamilla@gmail.com
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -22,6 +22,7 @@ package org.sonar.plugins.isomapping.batch;
 import org.picocontainer.behaviors.Decorated;
 import org.sonar.plugins.isomapping.ISOMappingMetrics;
 import org.apache.commons.lang.StringUtils;
+import org.sonar.api.config.Settings;
 import org.apache.commons.lang.math.RandomUtils;
 import org.sonar.api.batch.Decorator;
 import org.sonar.api.batch.DecoratorContext;
@@ -35,7 +36,10 @@ import org.sonar.api.measures.CoreMetrics;
 import org.sonar.api.measures.Measure;
 import org.sonar.api.measures.MeasureUtils;
 import org.sonar.api.measures.Metric;
-
+import org.sonar.api.measures.CoreMetrics;
+import org.sonar.api.measures.Measure;
+import org.sonar.api.measures.MeasureUtils;
+import org.sonar.api.measures.Metric;
 import java.util.Arrays;
 import java.util.List;
 
@@ -51,6 +55,7 @@ public class ISOMappingDecorator implements Decorator {
 		// Execute only on Java projects
 		return StringUtils.equals(project.getLanguageKey(), Java.KEY);
 	}
+	
 
 	public void decorate(Resource resource, DecoratorContext context) {
 		// This method is executed on the whole tree of resources.
