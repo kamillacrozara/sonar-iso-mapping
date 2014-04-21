@@ -1,7 +1,7 @@
 /*
  * SonarQube ISO/IEC 25000 Mapping
  * Copyright (C) 2014 Kamilla H. Crozara
- * dev@sonar.codehaus.org
+ * holanda.kamilla@gmail.com
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -19,7 +19,6 @@
  */
 package org.sonar.plugins.isomapping;
 
-import org.sonar.api.measures.CoreMetrics;
 import org.sonar.api.measures.Metric;
 import org.sonar.api.measures.Metrics;
 
@@ -28,27 +27,67 @@ import java.util.List;
 
 public final class ISOMappingMetrics implements Metrics {
 
-  // Modify the following metrics (variable name, attributes) to fit your plugin needs
+	public static final String MODULARITY_DOMAIN = "Modularity";
+	public static final String REUSABILITY_DOMAIN = "Modularity";
+	public static final String ANALYZABILITY_DOMAIN = "Modularity";
+	public static final String CHANGEABILITY_DOMAIN = "Modularity";
+	public static final String MODIFICATION_DOMAIN = "Modularity";
+	public static final String TESTABILITY_DOMAIN = "Modularity";
+	public static final String COMPLIANCE_DOMAIN = "Modularity";
 
-  // This metric is used by Sensor
-  public static final Metric MYMETRIC = new Metric.Builder("metric_key", "Metric Name", Metric.ValueType.STRING)
-      .setDescription("Metric description")
-      .setDirection(Metric.DIRECTION_WORST)
-      .setQualitative(false)
-      .setDomain(CoreMetrics.DOMAIN_GENERAL)
-      .create();
+	// This metric is used by Decorator
+	public static final Metric MODULARITY = new Metric.Builder(
+			"ISOMappingPlugin.Modularity", "Modularity", Metric.ValueType.FLOAT)
+			.setDescription("Modularity value")
+			.setDirection(Metric.DIRECTION_BETTER).setQualitative(true)
+			.setDomain(MODULARITY_DOMAIN).create();
 
-  // This metric is used by Decorator
-  public static final Metric RANDOM = new Metric.Builder("random", "Random", Metric.ValueType.FLOAT)
-      .setDescription("Random value")
-      .setDirection(Metric.DIRECTION_BETTER)
-      .setQualitative(false)
-      .setDomain(CoreMetrics.DOMAIN_GENERAL)
-      .create();
+	// This metric is used by Decorator
+	public static final Metric REUSABILITY = new Metric.Builder(
+			"ISOMappingPlugin.Reusability", "Reusability",
+			Metric.ValueType.FLOAT).setDescription("Reusability value")
+			.setDirection(Metric.DIRECTION_BETTER).setQualitative(true)
+			.setDomain(MODULARITY_DOMAIN).create();
 
-  // getMetrics() method is defined in the Metrics interface and is used by
-  // Sonar to retrieve the list of new metrics
-  public List<Metric> getMetrics() {
-    return Arrays.asList(MYMETRIC,RANDOM);
-  }
+	// This metric is used by Decorator
+	public static final Metric ANALYZABILITY = new Metric.Builder(
+			"ISOMappingPlugin.Analizability", "Analizability",
+			Metric.ValueType.FLOAT).setDescription("Analyzability value")
+			.setDirection(Metric.DIRECTION_BETTER).setQualitative(true)
+			.setDomain(MODULARITY_DOMAIN).create();
+
+	// This metric is used by Decorator
+	public static final Metric CHANGEABILITY = new Metric.Builder(
+			"ISOMappingPlugin.Changeability", "Changeability",
+			Metric.ValueType.FLOAT).setDescription("Changeability value")
+			.setDirection(Metric.DIRECTION_BETTER).setQualitative(true)
+			.setDomain(MODULARITY_DOMAIN).create();
+
+	// This metric is used by Decorator
+	public static final Metric MODIFICATION = new Metric.Builder(
+			"ISOMappingPlugin.Modification", "Modification stability",
+			Metric.ValueType.FLOAT).setDescription("Modification value")
+			.setDirection(Metric.DIRECTION_BETTER).setQualitative(true)
+			.setDomain(MODULARITY_DOMAIN).create();
+
+	// This metric is used by Decorator
+	public static final Metric TESTABILITY = new Metric.Builder(
+			"ISOMappingPlugin.Testability", "Testability",
+			Metric.ValueType.FLOAT).setDescription("Testability value")
+			.setDirection(Metric.DIRECTION_BETTER).setQualitative(true)
+			.setDomain(MODULARITY_DOMAIN).create();
+
+	// This metric is used by Decorator
+	public static final Metric COMPLIANCE = new Metric.Builder(
+			"ISOMappingPlugin.Compliance", "Compliance", Metric.ValueType.FLOAT)
+			.setDescription("Compliance value")
+			.setDirection(Metric.DIRECTION_BETTER).setQualitative(true)
+			.setDomain(MODULARITY_DOMAIN).create();
+
+	// getMetrics() method is defined in the Metrics interface and is used by
+	// Sonar to retrieve the list of new metrics
+	public List<Metric> getMetrics() {
+		return Arrays.asList(MODULARITY, REUSABILITY, ANALYZABILITY,
+				CHANGEABILITY, MODIFICATION, TESTABILITY, COMPLIANCE);
+	}
 }
