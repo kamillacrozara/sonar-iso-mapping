@@ -22,12 +22,11 @@ package org.sonar.plugins.isomapping.batch;
 import org.picocontainer.behaviors.Decorated;
 import org.sonar.plugins.isomapping.ISOMappingMetrics;
 import org.apache.commons.lang.StringUtils;
-import org.sonar.api.config.Settings;
 import org.apache.commons.lang.math.RandomUtils;
 import org.sonar.api.batch.Decorator;
 import org.sonar.api.batch.DecoratorContext;
 import org.sonar.api.batch.DependsUpon;
-import org.sonar.api.measures.MeasureUtils;
+import org.sonar.api.config.Settings;
 import org.sonar.api.resources.Java;
 import org.sonar.api.resources.Project;
 import org.sonar.api.resources.Resource;
@@ -36,16 +35,17 @@ import org.sonar.api.measures.CoreMetrics;
 import org.sonar.api.measures.Measure;
 import org.sonar.api.measures.MeasureUtils;
 import org.sonar.api.measures.Metric;
-import org.sonar.api.measures.CoreMetrics;
-import org.sonar.api.measures.Measure;
-import org.sonar.api.measures.MeasureUtils;
-import org.sonar.api.measures.Metric;
+
 import java.util.Arrays;
 import java.util.List;
 
 public class ISOMappingDecorator implements Decorator {
 
-
+	private Settings settings;
+	
+	public ISOMappingDecorator(Settings _settings){
+		this.settings = _settings;
+	}
 	@DependsUpon
 	public List<Metric> dependsOn() {
 		return Arrays.asList(CoreMetrics.FILE_COMPLEXITY);
